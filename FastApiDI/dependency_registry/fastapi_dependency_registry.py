@@ -1,9 +1,9 @@
 from copy import deepcopy
 from typing import Dict
 
-from fastapi_di.dependency_registry.abc import TDependency, TImplementationFactory
-from fastapi_di.dependency_registry.generic_dependency_registry import GenericDependencyRegistry
-from fastapi_di.factory_builders.abc import AbstractFactoryBuilder
+from FastApiDI.dependency_registry.abc import TDependency, TImplementationFactory
+from FastApiDI.dependency_registry.generic_dependency_registry import GenericDependencyRegistry
+from FastApiDI.factory_builders.abc import AbstractFactoryBuilder
 
 
 class FastApiDependencyRegistry(GenericDependencyRegistry):

@@ -3,8 +3,8 @@ from fastapi import FastAPI
 import endpoints
 from deps.abc import Abstract
 from deps.impl import Implementation
-from fastapi_di.dependency_registry import FastApiDependencyRegistry
-from fastapi_di.factory_builders import FactoryBuilder
+from FastApiDI.dependency_registry import FastApiDependencyRegistry
+from FastApiDI.factory_builders import FactoryBuilder
 
 
 def custom_factory() -> Abstract:
