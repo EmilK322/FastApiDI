@@ -1,6 +1,6 @@
 from typing import Any
 
-from fastapi_di.factory_builders.abc import AbstractFactoryBuilder, TObject, TCallableOfObject, \
+from FastApiDI.factory_builders.abc import AbstractFactoryBuilder, TObject, TCallableOfObject, \
     TFactory
 
 

@@ -1,8 +1,8 @@
 from typing import Type, Dict, Any
 
-from fastapi_di.dependency_registry.abc import AbstractDependencyRegistry, TDependency, \
+from FastApiDI.dependency_registry.abc import AbstractDependencyRegistry, TDependency, \
     TImplementation, TImplementationFactory
-from fastapi_di.factory_builders.abc import AbstractFactoryBuilder
+from FastApiDI.factory_builders.abc import AbstractFactoryBuilder
 
 
 class GenericDependencyRegistry(AbstractDependencyRegistry):

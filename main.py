@@ -1,8 +1,8 @@
 import abc
 import uuid
 
-from fastapi_di.dependency_registry import GenericDependencyRegistry
-from fastapi_di.factory_builders import FactoryBuilder
+from FastApiDI.dependency_registry import GenericDependencyRegistry
+from FastApiDI.factory_builders import FactoryBuilder
 
 
 class A(abc.ABC):

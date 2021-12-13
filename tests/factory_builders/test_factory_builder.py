@@ -4,7 +4,7 @@ from unittest.mock import call
 
 import pytest
 
-from fastapi_di.factory_builders import FactoryBuilder
+from FastApiDI.factory_builders import FactoryBuilder
 
 
 class TestFactoryBuilder:
