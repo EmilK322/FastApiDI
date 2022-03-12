@@ -3,17 +3,22 @@ from fastapi import FastAPI
 import endpoints
 from deps.abc import Abstract
 from deps.impl import Implementation
-from fastapidi.dependency_registry import FastApiDependencyRegistry
-from fastapidi.factory_builders import FactoryBuilder
+from fastapidi.facades import FastApiDI
 
 
 def create_app() -> FastAPI:
-    factory_builder = FactoryBuilder()
-    fastapi_dependency_registry = FastApiDependencyRegistry(factory_builder)
-
-    fastapi_dependency_registry.register_scoped(Abstract, Implementation)
-
     app = FastAPI()
-    app.include_router(endpoints.router)
-    app.dependency_overrides = fastapi_dependency_registry.to_dependency_overrides()
+    app_di = FastApiDI(app)
+
+    register_dependencies(app_di)
+    register_routers(app)
+
     return app
+
+
+def register_dependencies(app_di: FastApiDI):
+    app_di.register_scoped(Abstract, Implementation)
+
+
+def register_routers(app: FastAPI):
+    app.include_router(endpoints.router)
