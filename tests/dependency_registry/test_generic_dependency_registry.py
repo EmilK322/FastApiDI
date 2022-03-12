@@ -2,7 +2,7 @@ from unittest import mock
 
 import pytest
 
-from FastApiDI.dependency_registry import GenericDependencyRegistry
+from fastapidi.dependency_registry import GenericDependencyRegistry
 
 
 class TestGenericDependencyRegistry:
