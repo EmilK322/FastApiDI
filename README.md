@@ -25,7 +25,8 @@ app.dependency_overrides = {}
 FastApiDI uses that mechanism to enrich FastApi with additional features.
 
 ## Dependency Injection With FastApiDI
-FastApiDI implements all the 3 cons from above.  
+FastApiDI implements all the 3 cons from above and more.  
 ✅ Can work with abstractions and encourage you to do it.  
-✅ Inject dependencies from outside, replace implementations without changing route module.  
+✅ Injects dependencies from outside, replace implementations without changing route module.  
 ✅ Implements dependency lifetime management.  
+✅ Exposes its interfaces, implement it your way if you want.  
