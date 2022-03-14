@@ -110,7 +110,7 @@ Singleton Life-time can be set with `FastApiDI.register_singleton()` method.
 #### Scoped Life-Time
 Scoped life-time will create the dependency every time the dependency is requested.  
 Scoped Life-time can be set with `FastApiDI.register_scoped()` method.  
-**Note**: FastApi's `Depends` function can cache the dependency, this behaviour creates 2 different time-lifes, you can read about it in [Life-Time And FastApi's Depends](#Life-Time And FastApi's Depends)
+**Note**: FastApi's `Depends` function can cache the dependency, this behaviour creates 2 different time-lifes, you can read about it in [Life-Time And FastApi's Depends](README.md#life-time-and-fastapis-depends)
 
 #### Custom Life-Time
 FastApiDI gives you the option to customize the life-time of your dependencies.  
