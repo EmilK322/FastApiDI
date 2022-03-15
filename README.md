@@ -87,7 +87,7 @@ FastApiDI allows many options for registering dependencies
   
 - Inject implementation as the same implementation.  
   ```python
-  FastApiDI.register_scoped(Abstract, Implementation)
+  FastApiDI.register_scoped(Implementation, Implementation)
   ```
 
 - Inject implementation as the options above with parameters.
