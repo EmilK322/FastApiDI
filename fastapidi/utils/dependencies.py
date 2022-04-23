@@ -26,7 +26,7 @@ def callable_has_params(callable_: Callable) -> bool:
     return bool(signature.parameters)
 
 
-class ParameterizedDepends(Depends):
+class ParametrizedDepends(Depends):
     def __init__(self, dependency: Callable[..., Any], *, use_cache: bool = True):
         if callable_has_params(dependency):
             dependency = create_parameterless_proxy_class(dependency)
