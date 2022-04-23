@@ -153,15 +153,15 @@ from fastapi import Depends
 Depends(ParametrizedClass)
 ```
 With
+
 ```python
 # Option 1
-from fastapidi.utils.dependencies import ParameterizedDepends
+from fastapidi.utils.dependencies import ParametrizedDepends
 
-ParameterizedDepends(ParametrizedClass)
-
+ParametrizedDepends(ParametrizedClass)
 
 # Option 2
-from fastapidi.utils.dependencies import ParameterizedDepends as Depends
+from fastapidi.utils.dependencies import ParametrizedDepends as Depends
 
 Depends(ParametrizedClass)
 ```
