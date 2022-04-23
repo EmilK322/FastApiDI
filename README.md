@@ -96,35 +96,36 @@ FastApiDI allows many options for registering dependencies
   ```
 Resigtration using abstractions is recommended!
 
-### Life-Time Management
-Dependency life-time is the scope of which it is getting created and destroyed.   
-There are 3 types of life-time's in FastApiDI
+### lifetime Management
+Dependency lifetime is the scope of which it is getting created and destroyed.   
+There are 3 types of lifetime's in FastApiDI
 - Singleton
 - Scoped
 - Custom
 
-#### Singleton Life-Time
-Singleton life-time will create the dependency only once for the entire application life-time.  
-Singleton Life-time can be set with `FastApiDI.register_singleton()` method.
+#### Singleton lifetime
+Singleton lifetime will create the dependency only once for the entire application lifetime.  
+Singleton lifetime can be set with `FastApiDI.register_singleton()` method.
 
-#### Scoped Life-Time
-Scoped life-time will create the dependency every time the dependency is requested.  
-Scoped Life-time can be set with `FastApiDI.register_scoped()` method.  
-**Note**: FastApi's `Depends` function can cache the dependency, this behaviour creates 2 different time-lifes, you can read about it in [Life-Time And FastApi's Depends](README.md#life-time-and-fastapis-depends)
+#### Scoped lifetime
+Scoped lifetime will create the dependency every time the dependency is requested.  
+Scoped lifetime can be set with `FastApiDI.register_scoped()` method.  
+> **Note:**  
+> FastApi's `Depends` function can cache the dependency, this behaviour creates 2 different lifetimes, you can read about it in [lifetime And FastApi's Depends](README.md#lifetime-and-fastapis-depends)
 
-#### Custom Life-Time
-FastApiDI gives you the option to customize the life-time of your dependencies.  
-To implement your own life-time you simply need to register `factory` instead of the dependency itself.  
+#### Custom lifetime
+FastApiDI gives you the option to customize the lifetime of your dependencies.  
+To implement your own lifetime you simply need to register `factory` instead of the dependency itself.  
 `Factory` is a function which takes 0 arguments and return the dependency.  
 The `factory` is responsible for managing the creation and deletion of the dependency upon its different calls.  
-Custom Life-time can be set with `FastApiDI.register_factory()` method.  
-
-Singleton Life-time can be set with `FastApiDI.register_singleton()` method.
+Custom lifetime can be set with `FastApiDI.register_factory()` method.
 
 
-#### Life-Time And FastApi's Depends
-FastApi's `Depends` can cache the dependancy using `use_cache` parameter which defaults to `True`.  
+#### lifetime And FastApi's Depends
+FastApi's `Depends` can cache the dependency using `use_cache` parameter which defaults to `True`.  
 If `use_cache=True`, then the dependency will be cached independently of FastApiDI.  
-The dependency will have life-time at least of the called request scope.  
-This behaviour can impact registrations with shorter life-time then the called request scope and have no impact on longer life-times like `Singleton`.  
+The dependency will have lifetime at least of the called request scope.  
+This behaviour can impact registrations with shorter lifetime then the called request scope and have no impact on longer lifetimes like `Singleton`.  
 To disable `Depends` caching pass `use_cache=False` to it
+
+
