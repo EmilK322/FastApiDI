@@ -129,3 +129,39 @@ This behaviour can impact registrations with shorter lifetime then the called re
 To disable `Depends` caching pass `use_cache=False` to it
 
 
+### Dependencies With Parameters
+FastApi doesn't allow dependencies that have `__init__` with parameters, the docs says that we must implement `__call__` without parameters,
+we also cannot use function names as dependencies,
+although for functions this limited behavior makes sense, for classes and instances it is a crucial feature that doesn't supported,
+passing objects at the instance initialization or at method call it is the _dependency injection_ in OOP.  
+This is another case of FastApi's built-in dependency injection drawbacks.  
+If you try to use dependency with parameters, you will face 2 major issues.  
+1. At route calls FastApi will try to get them as query parameters because this is the default behavior of FastApi when it doesn't know the source of the parameter 
+   and you will get `422 Unprocessable Entity` with a validation error for those parameters, ***this will break your code***.
+2. Because of the default behavior of FastApi for looking parameters as query parameters, the generated Swagger docs would have query parameters on the routes using the parametrized dependencies.
+   This will not break your code but expose wrong API docs is the worst thing you can do.
+
+
+#### Using `ParametrizedDepends` For Dependencies With Parameters
+FastApiDI provides additional `Depends` class called `ParametrizedDepends`.  
+`ParametrizedDepends` acts as a regular `Depends`(actually it derives from it) but when it gets a parametrized dependency
+it mimics the dependency but with an empty `__init__`.  
+Replace
+```python
+from fastapi import Depends
+
+Depends(ParametrizedClass)
+```
+With
+```python
+# Option 1
+from fastapidi.utils.dependencies import ParameterizedDepends
+
+ParameterizedDepends(ParametrizedClass)
+
+
+# Option 2
+from fastapidi.utils.dependencies import ParameterizedDepends as Depends
+
+Depends(ParametrizedClass)
+```
