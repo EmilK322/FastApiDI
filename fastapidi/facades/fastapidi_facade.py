@@ -1,6 +1,7 @@
 from typing import Dict, Type, Any
 
 from fastapi import FastAPI
+from fastapi.routing import APIRoute
 
 from fastapidi.dependency_registry import GenericDependencyRegistry
 from fastapidi.dependency_registry.abc import TDependency, TImplementation, TImplementationFactory
@@ -13,7 +14,11 @@ class FastApiDI(GenericDependencyRegistry):
     def __init__(self, app: FastAPI):
         factory_builder: AbstractFactoryBuilder = FactoryBuilder()
         super().__init__(factory_builder)
+        app.dependency_overrides = self.dependency_overrides
         app.router.dependency_overrides_provider = self
+        for route in app.router.routes:
+            if isinstance(route, APIRoute):
+                route.dependency_overrides_provider = self
 
     def register_singleton(self, dependency_type: Type[TDependency], implementation_type: Type[TImplementation],
                            *args: Any, **kwargs: Any) -> None:
